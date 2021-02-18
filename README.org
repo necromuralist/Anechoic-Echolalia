@@ -1,3 +1,5 @@
 #+TITLE: Anechoic Echolalia
 
 This is a repository for notes taken while documenting other people's stuff.
+
+Favicon: [[https://thenounproject.com/search/?q=parrot&i=2490078][parakeet]] by priyanka from [[https://thenounproject.com][the Noun Project]]
