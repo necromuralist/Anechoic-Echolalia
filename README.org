@@ -1,3 +1,0 @@
-#+TITLE: Anechoic Echolalia
-
-This is a repository for notes taken while documenting other people's stuff.
