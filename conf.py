@@ -141,10 +141,9 @@ NAVIGATION_LINKS = {
         ("/rss.xml", "RSS feed"),
         (
             (
-                ("https://necromuralist.github.io/", "The Mother Ship"),
+                ("https://necromuralist.github.io/index.html", "The Mother Ship"),                                
                 ("https://necromuralist.github.io/Neurotic-Networking/", "Neurotic Networking"),
-                ("/machine-learning-projects/", "Machine Learning"),
-                ("https://necromuralist.github.io/Visions-Voices-Data/", "Visions, Voices, Data")
+                ("https://necromuralist.github.io/Visions-Voices-Data/", "Visions, Voices, Data"),
             ),
             "Projects"
         ),
@@ -233,7 +232,7 @@ POSTS = (
     ("posts/*.org", "posts", "post.tmpl"),    
 )
 PAGES = (
-    ("pages/*.rst", "pages", "page.tmpl"),
+#    ("pages/*.rst", "pages", "page.tmpl"),
     ("pages/*.md", "pages", "page.tmpl"),
     ("pages/*.txt", "pages", "page.tmpl"),
     ("pages/*.html", "pages", "page.tmpl"),
@@ -934,7 +933,7 @@ LICENSE = '<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.o
 
 # A small copyright notice for the page footer (in HTML).
 # (translatable)
-CONTENT_FOOTER = 'Contents &copy; {date}         <a href="mailto:{email}">{author}</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         {license}'
+CONTENT_FOOTER = '<a href="mailto:{email}">{author}</a> - Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a> {license}'
 
 # Things that will be passed to CONTENT_FOOTER.format().  This is done
 # for translatability, as dicts are not formattable.  Nikola will
