@@ -1,0 +1,284 @@
+#+BEGIN_COMMENT
+.. title: Trax Hello World
+.. slug: trax-hello-world
+.. date: 2021-02-19 17:29:37 UTC-08:00
+.. tags: trax,basics,linear regression
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+.. status: 
+.. updated: 
+.. has_math: True
+#+END_COMMENT
+#+OPTIONS: ^:{}
+#+TOC: headlines 3
+#+PROPERTY: header-args :session ~/.local/share/jupyter/runtime/kernel-1b04e176-99b7-42d6-acb5-079b71504ab3-ssh.json
+#+BEGIN_SRC python :results none :exports none
+%load_ext autoreload
+%autoreload 2
+#+END_SRC
+* Beginning
+  This 'Hello World' takes data created by a simple linear model and trains a neural network to model it. The actual model will take this form:
+
+\[
+y = mx + b
+\]
+** Imports
+#+begin_src python :results none
+# python
+from collections import namedtuple
+from functools import partial
+from pathlib import Path
+from tempfile import TemporaryFile
+
+import random
+import shutil
+import sys
+
+# pypi
+from holoviews import opts
+from trax import layers
+from trax.supervised import training
+
+import holoviews
+import hvplot.pandas
+import numpy
+import pandas
+import trax
+
+# my stuff
+from graeae import EmbedHoloviews, Timer
+#+end_src
+** Set Up
+*** The Random Generator
+    See: [[https://numpy.org/doc/stable/reference/random/generator.html#numpy.random.default_rng][numpy.random.default_rng]]
+#+begin_src python :results none
+random_generator = numpy.random.default_rng(seed=2021)
+#+end_src
+*** The Plotting
+#+begin_src python :results none
+slug = "trax-hello-world"
+Embed = partial(EmbedHoloviews, folder_path=f"files/posts/trax/{slug}")
+
+Plot = namedtuple("Plot", ["width", "height", "fontscale", "tan", "blue", "red"])
+PLOT = Plot(
+    width=900,
+    height=750,
+    fontscale=2,
+    tan="#ddb377",
+    blue="#4687b7",
+    red="#ce7b6d",
+ )
+#+end_src
+*** The Timer
+#+begin_src python :results none
+TIMER = Timer()
+#+end_src    
+* Middle
+** The Data
+   Trax is pretty invested in using generators, but I also want to be able to plot it, so rather than just generate the data on the fly I'll create a numpy array and then generate the data from it.
+*** Sample
+    See:
+     - [[https://numpy.org/devdocs/reference/random/generated/numpy.random.Generator.standard_normal.html?highlight=standard_normal#numpy.random.Generator.standard_normal][numpy.random.Generator.standard_normal]]
+     - [[https://numpy.org/devdocs/reference/random/generated/numpy.random.Generator.random.html?highlight=random#numpy.random.Generator.random][numpy.random.Generator.random]]
+#+begin_src python :results none
+def sample(start: float, stop: float, shape: tuple, uniform: bool=True) -> numpy.ndarray:
+    """Create a random sample
+
+    Args:
+     start: lowest allowed value
+     stop: highest allowed value
+     shape: shape for the final array (just an int for single values)
+     uniform: use the uniform distribution instead of the standard normal
+    """
+    if uniform:
+        return (stop - start) * random_generator.random(shape) + start
+    return (stop - start) * random_generator.standard_normal(shape) + start
+#+end_src
+*** Y-Values
+The =sample= will create our x-values, but we also need our y-values, so I'll generate those to.
+
+#+begin_src python :results none
+SAMPLES = 200
+X_RANGE = 5
+x_values = sample(-X_RANGE, X_RANGE, SAMPLES)
+slope = sample(-5, 5, 1)
+intercept = sample(-5, 5, 1)
+noise = sample(-5, 5, SAMPLES, uniform=False)
+y_values = slope * x_values + intercept + noise
+#+end_src
+*** Plotting the Data
+#+begin_src python :results none
+data_frame = pandas.DataFrame.from_dict(dict(X=x_values, Y=y_values))
+plot = data_frame.hvplot.scatter(x="X", y="Y", title="Sample Data").opts(
+    height=PLOT.height,
+    width=PLOT.width,
+    fontscale=PLOT.fontscale
+)
+output = Embed(plot=plot, file_name="data_sample")()
+#+end_src
+
+#+begin_src python :results output html :exports output
+print(output)
+#+end_src
+
+#+RESULTS:
+#+begin_export html
+<object type="text/html" data="data_sample.html" style="width:100%" height=800>
+  <p>Figure Missing</p>
+</object>
+#+end_export
+*** Data Generator
+#+begin_src python :results none
+def linear_generator(x: numpy.ndarray, y: numpy.ndarray) -> tuple:
+    """Generator of linear data
+
+    Args:
+     x: vector of input data
+     y: vector of output data
+
+    Yields:
+     (x, y): single instance of x and single instance of y
+    """
+    total = len(x)
+    assert x.shape == y.shape
+    index = 0
+    while True:
+        yield (numpy.array([x[index]]), numpy.array([y[index]]))
+        index = index % total
+    return
+#+end_src
+
+#+begin_src python :results output :exports both
+generator = linear_generator(x_values, y_values)
+print(next(generator))
+#+end_src
+
+#+RESULTS:
+: (array([4.58281806]), array([-24.5758327]))
+*** The Data Pipeline
+    - [[https://trax-ml.readthedocs.io/en/latest/trax.data.html#trax.data.inputs.Serial][trax.data.Serial]]    
+    - [[https://trax-ml.readthedocs.io/en/latest/trax.data.html#trax.data.inputs.Batch][trax.data.batch]]
+    - [[https://trax-ml.readthedocs.io/en/latest/trax.data.html#trax.data.inputs.AddLossWeights][trax.data.AddLossWeights]]
+
+#+begin_src python :results none
+data_pipeline = trax.data.Serial(trax.data.Batch(50), trax.data.AddLossWeights(),)
+data_stream = data_pipeline(generator)
+#+end_src
+** The Model
+   - [[https://trax-ml.readthedocs.io/en/latest/trax.layers.html#trax.layers.combinators.Serial][trax.layers.Serial]]
+   - [[https://trax-ml.readthedocs.io/en/latest/trax.layers.html#trax.layers.core.Dense][trax.layers.Dense]]
+#+begin_src python :results none
+model = layers.Serial(layers.Dense(1))
+#+end_src
+** Train the Model
+*** Set It Up   
+   - [[https://trax-ml.readthedocs.io/en/latest/trax.layers.html#trax.layers.metrics.L2Loss][trax.layers.L2Loss]]
+   - [[https://trax-ml.readthedocs.io/en/latest/trax.optimizers.html#trax.optimizers.base.SGD][trax.optimizers.SGD]]
+     
+The online documentation doesn't cover the =TrainTask= and =EvalTask=, for some reason.
+
+#+begin_src python :results none
+train_task = training.TrainTask(
+    labeled_data=data_stream,
+    loss_layer=layers.L2Loss(),
+    optimizer=trax.optimizers.SGD(0.01),
+    n_steps_per_checkpoint=10,
+)
+
+eval_task = training.EvalTask(
+    labeled_data=data_stream, metrics=[layers.L2Loss()],
+    n_eval_batches=10,
+)
+#+end_src
+*** Run the Training
+    - [[https://trax-ml.readthedocs.io/en/latest/trax.supervised.html#trax.supervised.training.Loop][trax.supervised.training.Loop]]
+    - [[https://docs.python.org/3/library/tempfile.html#tempfile.TemporaryFile][tempfile.TemporaryFile]]
+    - [[https://docs.python.org/3/library/pathlib.html#pathlib.Path][pathlib.Path]]
+    - [[https://docs.python.org/3/library/sys.html][sys]]
+
+I use the =TemporaryFile= because I can't figure out how to prevent the training loop printing to standard out and making this file way too long.
+
+#+begin_src python :results none
+TRAIN_STEPS = 200
+path = Path("~/models/linear_model").expanduser()
+if path.exists():
+    shutil.rmtree(path)
+training_loop = training.Loop(
+    model, train_task, eval_tasks=[eval_task], output_dir=path
+)
+#+end_src
+
+#+begin_src python :results output :exports both
+real_stdout = sys.stdout
+with TIMER:
+    with TemporaryFile("w") as temp_file:
+        sys.stdout = temp_file
+        training_loop.run(TRAIN_STEPS)
+        sys.stdout = real_stdout
+#+end_src    
+
+#+RESULTS:
+: Started: 2021-02-19 20:47:16.476023
+: Ended: 2021-02-19 20:47:17.257812
+: Elapsed: 0:00:00.781789
+** Plotting the Loss
+#+begin_src python :results none
+frame = pandas.DataFrame(training_loop.history.get("eval", "metrics/L2Loss"), columns=["Batch", "L2 Loss"])
+
+minimum = frame.loc[frame["L2 Loss"].idxmin()]
+vline = holoviews.VLine(minimum.Batch).opts(opts.VLine(color=PLOT.red))
+hline = holoviews.HLine(minimum["L2 Loss"]).opts(opts.HLine(color=PLOT.red))
+line = frame.hvplot(x="Batch", y="L2 Loss").opts(opts.Curve(color=PLOT.blue))
+
+plot = (line * hline * vline).opts(
+    width=PLOT.width, height=PLOT.height,
+    title="Evaluation Batch L2 Loss",
+                                   )
+output = Embed(plot=plot, file_name="evaluation_l2_loss")()
+#+end_src
+
+#+begin_src python :results output html :exports output
+print(output)
+#+end_src
+
+#+RESULTS:
+#+begin_export html
+<object type="text/html" data="evaluation_l2_loss.html" style="width:100%" height=800>
+  <p>Figure Missing</p>
+</object>
+#+end_export
+
+It looks like it fits pretty quickly.
+** Plotting the Model
+
+#+begin_src python :results none
+predictions = model(x_values.reshape((len(x_values), 1)))
+data_frame["Predicted"] = predictions[:, 0]
+#+end_src
+
+#+begin_src python :results none
+actual = data_frame.hvplot.scatter(x="X", y="Y", color=PLOT.tan, label="Data")
+predicted = data_frame.hvplot.scatter(x="X", y="Predicted", color=PLOT.red, label="Predicted")
+plot = (actual * predicted).opts(
+    height=PLOT.height,
+    width=PLOT.width,
+    fontscale=PLOT.fontscale
+)
+output = Embed(plot=plot, file_name="predictions")()
+#+end_src
+
+#+begin_src python :results output html :exports output
+print(output)
+#+end_src
+
+#+RESULTS:
+#+begin_export html
+ <object type="text/html" data="predictions.html" style="width:100%" height=800>
+   <p>Figure Missing</p>
+ </object>
+#+end_export
+
+* End
+  - The trax code was taken from an example notebook in their [[https://github.com/thoo/trax-tutorial/blob/master/basic_regression_tensorboard.ipynb][Github Repository]].
