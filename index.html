@@ -63,53 +63,82 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="posts/trax/trax-hello-world/#org46e8a5e">Beginning</a>
+<li><a href="posts/trax/trax-hello-world/#orgbc13eda">Beginning</a>
 <ul>
-<li><a href="posts/trax/trax-hello-world/#org604bee2">Imports</a></li>
-<li><a href="posts/trax/trax-hello-world/#org72daa8c">Set Up</a>
+<li><a href="posts/trax/trax-hello-world/#org8882a17">Imports</a>
 <ul>
-<li><a href="posts/trax/trax-hello-world/#orga7a7916">The Random Generator</a></li>
-<li><a href="posts/trax/trax-hello-world/#org7d16dbb">The Plotting</a></li>
-<li><a href="posts/trax/trax-hello-world/#orgb68967b">The Timer</a></li>
+<li><a href="posts/trax/trax-hello-world/#org2b226a3">Trax Imports</a></li>
+<li><a href="posts/trax/trax-hello-world/#orga034f8f">Not-Trax</a></li>
+</ul>
+</li>
+<li><a href="posts/trax/trax-hello-world/#org2366e91">Set Up</a>
+<ul>
+<li><a href="posts/trax/trax-hello-world/#orgb1848ad">The Random Generator</a></li>
+<li><a href="posts/trax/trax-hello-world/#org786c127">The Plotting</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="posts/trax/trax-hello-world/#org168c3c4">Middle</a>
+<li><a href="posts/trax/trax-hello-world/#orge3203b4">The Linear Regression</a>
 <ul>
-<li><a href="posts/trax/trax-hello-world/#org1dbe1d7">The Data</a>
+<li><a href="posts/trax/trax-hello-world/#org38233e6">The Data</a>
 <ul>
-<li><a href="posts/trax/trax-hello-world/#orga22d379">Sample</a></li>
-<li><a href="posts/trax/trax-hello-world/#org4d43373">Y-Values</a></li>
-<li><a href="posts/trax/trax-hello-world/#org626260c">Plotting the Data</a></li>
-<li><a href="posts/trax/trax-hello-world/#org708c822">Data Generator</a></li>
-<li><a href="posts/trax/trax-hello-world/#org48a5a4b">The Data Pipeline</a></li>
+<li><a href="posts/trax/trax-hello-world/#org06ea467">Sample</a></li>
+<li><a href="posts/trax/trax-hello-world/#org046af70">The Samples</a></li>
+<li><a href="posts/trax/trax-hello-world/#org32e2cdf">Plotting the Data</a></li>
+<li><a href="posts/trax/trax-hello-world/#org4bc041b">Data Generator</a></li>
+<li><a href="posts/trax/trax-hello-world/#orga2f4a3f">The Data Pipeline</a></li>
 </ul>
 </li>
-<li><a href="posts/trax/trax-hello-world/#org3a80e5d">The Model</a></li>
-<li><a href="posts/trax/trax-hello-world/#org5b650c0">Train the Model</a>
+<li><a href="posts/trax/trax-hello-world/#org62f32a4">The Model</a></li>
+<li><a href="posts/trax/trax-hello-world/#org89006bf">Train the Model</a>
 <ul>
-<li><a href="posts/trax/trax-hello-world/#org174d71c">Set It Up</a></li>
-<li><a href="posts/trax/trax-hello-world/#org7ae8deb">Run the Training</a></li>
+<li><a href="posts/trax/trax-hello-world/#org4ef58b5">Set It Up</a></li>
+<li><a href="posts/trax/trax-hello-world/#org897563e">Run the Training</a></li>
 </ul>
 </li>
-<li><a href="posts/trax/trax-hello-world/#orga8697ca">Plotting the Loss</a></li>
-<li><a href="posts/trax/trax-hello-world/#org726195f">Plotting the Model</a></li>
+<li><a href="posts/trax/trax-hello-world/#org12b2d31">Plotting the Loss</a></li>
+<li><a href="posts/trax/trax-hello-world/#orgf5a3df5">Statsmodels Model</a></li>
+<li><a href="posts/trax/trax-hello-world/#org9201366">Plotting the Model</a></li>
+<li><a href="posts/trax/trax-hello-world/#org63f6e96">Looking at \(R^2\)</a></li>
+<li><a href="posts/trax/trax-hello-world/#org1f7d9fb">Parameters</a></li>
 </ul>
 </li>
-<li><a href="posts/trax/trax-hello-world/#org46ac1bd">End</a></li>
+<li><a href="posts/trax/trax-hello-world/#org2c9859a">End</a></li>
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org46e8a5e">
-<h2 id="org46e8a5e">Beginning</h2>
-<div class="outline-text-2" id="text-org46e8a5e">
+<div class="outline-2" id="outline-container-orgbc13eda">
+<h2 id="orgbc13eda">Beginning</h2>
+<div class="outline-text-2" id="text-orgbc13eda">
 <p>This 'Hello World' takes data created by a simple linear model and trains a neural network to model it. The actual model will take this form:</p>
 <p>\[ y = mx + b \]</p>
+<p>Where <i>m</i> is the slope and <i>b</i> is the y-intercept. In statistics this is sometimes written using betas:</p>
+<p>\[ y = \beta_0 + \beta_1 x \]</p>
+<p>And in machine learning it's sometimes written with weights:</p>
+<p>\[ y = w_0 + w_1 x \]</p>
+<p>Or with a bias and a weight:</p>
+<p>\[ y = bias + w_0 x \]</p>
 </div>
-<div class="outline-3" id="outline-container-org604bee2">
-<h3 id="org604bee2">Imports</h3>
-<div class="outline-text-3" id="text-org604bee2">
+<div class="outline-3" id="outline-container-org8882a17">
+<h3 id="org8882a17">Imports</h3>
+<div class="outline-text-3" id="text-org8882a17"></div>
+<div class="outline-4" id="outline-container-org2b226a3">
+<h4 id="org2b226a3">Trax Imports</h4>
+<div class="outline-text-4" id="text-org2b226a3">
+<p>Since this is about trax I'll separate out the imports to make it more obvious.</p>
+<div class="highlight">
+<pre><span></span><span class="kn">from</span> <span class="nn">trax</span> <span class="kn">import</span> <span class="n">layers</span>
+<span class="kn">from</span> <span class="nn">trax.supervised</span> <span class="kn">import</span> <span class="n">training</span>
+
+<span class="kn">import</span> <span class="nn">trax</span>
+</pre></div>
+</div>
+</div>
+<div class="outline-4" id="outline-container-orga034f8f">
+<h4 id="orga034f8f">Not-Trax</h4>
+<div class="outline-text-4" id="text-orga034f8f">
+<p>The rest of this is just to support the data creation, plotting, etc.</p>
 <div class="highlight">
 <pre><span></span><span class="c1"># python</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
@@ -123,35 +152,37 @@
 
 <span class="c1"># pypi</span>
 <span class="kn">from</span> <span class="nn">holoviews</span> <span class="kn">import</span> <span class="n">opts</span>
-<span class="kn">from</span> <span class="nn">trax</span> <span class="kn">import</span> <span class="n">layers</span>
-<span class="kn">from</span> <span class="nn">trax.supervised</span> <span class="kn">import</span> <span class="n">training</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
 
 <span class="kn">import</span> <span class="nn">holoviews</span>
 <span class="kn">import</span> <span class="nn">hvplot.pandas</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">import</span> <span class="nn">pandas</span>
-<span class="kn">import</span> <span class="nn">trax</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">statsmodels</span>
 
 <span class="c1"># my stuff</span>
-<span class="kn">from</span> <span class="nn">graeae</span> <span class="kn">import</span> <span class="n">EmbedHoloviews</span><span class="p">,</span> <span class="n">Timer</span>
+<span class="kn">from</span> <span class="nn">graeae</span> <span class="kn">import</span> <span class="n">EmbedHoloviews</span>
 </pre></div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org72daa8c">
-<h3 id="org72daa8c">Set Up</h3>
-<div class="outline-text-3" id="text-org72daa8c"></div>
-<div class="outline-4" id="outline-container-orga7a7916">
-<h4 id="orga7a7916">The Random Generator</h4>
-<div class="outline-text-4" id="text-orga7a7916">
+</div>
+<div class="outline-3" id="outline-container-org2366e91">
+<h3 id="org2366e91">Set Up</h3>
+<div class="outline-text-3" id="text-org2366e91"></div>
+<div class="outline-4" id="outline-container-orgb1848ad">
+<h4 id="orgb1848ad">The Random Generator</h4>
+<div class="outline-text-4" id="text-orgb1848ad">
+<p>This is the newer (to me) way to generate random numbers with numpy.</p>
 <p>See: <a href="https://numpy.org/doc/stable/reference/random/generator.html#numpy.random.default_rng">numpy.random.default_rng</a></p>
 <div class="highlight">
 <pre><span></span><span class="n">random_generator</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">2021</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org7d16dbb">
-<h4 id="org7d16dbb">The Plotting</h4>
-<div class="outline-text-4" id="text-org7d16dbb">
+<div class="outline-4" id="outline-container-org786c127">
+<h4 id="org786c127">The Plotting</h4>
+<div class="outline-text-4" id="text-org786c127">
+<p>Just some helpers for later on when I do some plotting.</p>
 <div class="highlight">
 <pre><span></span><span class="n">slug</span> <span class="o">=</span> <span class="s2">"trax-hello-world"</span>
 <span class="n">Embed</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">EmbedHoloviews</span><span class="p">,</span> <span class="n">folder_path</span><span class="o">=</span><span class="sa">f</span><span class="s2">"files/posts/trax/</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
@@ -168,27 +199,19 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-orgb68967b">
-<h4 id="orgb68967b">The Timer</h4>
-<div class="outline-text-4" id="text-orgb68967b">
-<div class="highlight">
-<pre><span></span><span class="n">TIMER</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">()</span>
-</pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org168c3c4">
-<h2 id="org168c3c4">Middle</h2>
-<div class="outline-text-2" id="text-org168c3c4"></div>
-<div class="outline-3" id="outline-container-org1dbe1d7">
-<h3 id="org1dbe1d7">The Data</h3>
-<div class="outline-text-3" id="text-org1dbe1d7">
+<div class="outline-2" id="outline-container-orge3203b4">
+<h2 id="orge3203b4">The Linear Regression</h2>
+<div class="outline-text-2" id="text-orge3203b4"></div>
+<div class="outline-3" id="outline-container-org38233e6">
+<h3 id="org38233e6">The Data</h3>
+<div class="outline-text-3" id="text-org38233e6">
 <p>Trax is pretty invested in using generators, but I also want to be able to plot it, so rather than just generate the data on the fly I'll create a numpy array and then generate the data from it.</p>
 </div>
-<div class="outline-4" id="outline-container-orga22d379">
-<h4 id="orga22d379">Sample</h4>
-<div class="outline-text-4" id="text-orga22d379">
+<div class="outline-4" id="outline-container-org06ea467">
+<h4 id="org06ea467">Sample</h4>
+<div class="outline-text-4" id="text-org06ea467">
 <p>See:</p>
 <ul class="org-ul">
 <li><a href="https://numpy.org/devdocs/reference/random/generated/numpy.random.Generator.standard_normal.html?highlight=standard_normal#numpy.random.Generator.standard_normal">numpy.random.Generator.standard_normal</a></li>
@@ -210,27 +233,34 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org4d43373">
-<h4 id="org4d43373">Y-Values</h4>
-<div class="outline-text-4" id="text-org4d43373">
-<p>The <code>sample</code> will create our x-values, but we also need our y-values, so I'll generate those to.</p>
+<div class="outline-4" id="outline-container-org046af70">
+<h4 id="org046af70">The Samples</h4>
+<div class="outline-text-4" id="text-org046af70">
+<p>He're I'll make the linear-ish data with some noise added to it.</p>
 <div class="highlight">
 <pre><span></span><span class="n">SAMPLES</span> <span class="o">=</span> <span class="mi">200</span>
 <span class="n">X_RANGE</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">x_values</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="o">-</span><span class="n">X_RANGE</span><span class="p">,</span> <span class="n">X_RANGE</span><span class="p">,</span> <span class="n">SAMPLES</span><span class="p">)</span>
-<span class="n">slope</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">intercept</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">noise</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">SAMPLES</span><span class="p">,</span> <span class="n">uniform</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">y_values</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x_values</span> <span class="o">+</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">noise</span>
+<span class="n">SLOPE</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">INTERCEPT</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">SAMPLES</span><span class="p">,</span> <span class="n">uniform</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">y_values</span> <span class="o">=</span> <span class="n">SLOPE</span> <span class="o">*</span> <span class="n">x_values</span> <span class="o">+</span> <span class="n">INTERCEPT</span> <span class="o">+</span> <span class="n">noise</span>
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org626260c">
-<h4 id="org626260c">Plotting the Data</h4>
-<div class="outline-text-4" id="text-org626260c">
+<div class="outline-4" id="outline-container-org32e2cdf">
+<h4 id="org32e2cdf">Plotting the Data</h4>
+<div class="outline-text-4" id="text-org32e2cdf">
 <div class="highlight">
 <pre><span></span><span class="n">data_frame</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">x_values</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="n">y_values</span><span class="p">))</span>
-<span class="n">plot</span> <span class="o">=</span> <span class="n">data_frame</span><span class="o">.</span><span class="n">hvplot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"X"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"Y"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Sample Data"</span><span class="p">)</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span>
+<span class="n">first</span><span class="p">,</span> <span class="n">last</span> <span class="o">=</span> <span class="n">x_values</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x_values</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">line_frame</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span>
+    <span class="nb">dict</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="p">[</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">],</span>
+         <span class="n">Y</span><span class="o">=</span><span class="p">[</span><span class="n">slope</span> <span class="o">*</span> <span class="n">first</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">,</span>
+            <span class="n">slope</span> <span class="o">*</span> <span class="n">last</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">]))</span>
+<span class="n">line_plot</span> <span class="o">=</span> <span class="n">line_frame</span><span class="o">.</span><span class="n">hvplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"X"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"Y"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">PLOT</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
+<span class="n">data_plot</span> <span class="o">=</span> <span class="n">data_frame</span><span class="o">.</span><span class="n">hvplot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"X"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"Y"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Sample Data"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">PLOT</span><span class="o">.</span><span class="n">tan</span><span class="p">)</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_plot</span> <span class="o">*</span> <span class="n">line_plot</span><span class="p">)</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span>
     <span class="n">height</span><span class="o">=</span><span class="n">PLOT</span><span class="o">.</span><span class="n">height</span><span class="p">,</span>
     <span class="n">width</span><span class="o">=</span><span class="n">PLOT</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
     <span class="n">fontscale</span><span class="o">=</span><span class="n">PLOT</span><span class="o">.</span><span class="n">fontscale</span>
@@ -244,9 +274,10 @@
 <p>Figure Missing</p>
 </object></div>
 </div>
-<div class="outline-4" id="outline-container-org708c822">
-<h4 id="org708c822">Data Generator</h4>
-<div class="outline-text-4" id="text-org708c822">
+<div class="outline-4" id="outline-container-org4bc041b">
+<h4 id="org4bc041b">Data Generator</h4>
+<div class="outline-text-4" id="text-org4bc041b">
+<p>This will generate the data for the trax batch generator.</p>
 <div class="highlight">
 <pre><span></span><span class="k">def</span> <span class="nf">linear_generator</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
     <span class="sd">"""Generator of linear data</span>
@@ -271,12 +302,12 @@
 <span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">generator</span><span class="p">))</span>
 </pre></div>
 <pre class="example">
-(array([4.58281806]), array([-24.5758327]))
+(array([2.56947828]), array([10.52443023]))
 </pre></div>
 </div>
-<div class="outline-4" id="outline-container-org48a5a4b">
-<h4 id="org48a5a4b">The Data Pipeline</h4>
-<div class="outline-text-4" id="text-org48a5a4b">
+<div class="outline-4" id="outline-container-orga2f4a3f">
+<h4 id="orga2f4a3f">The Data Pipeline</h4>
+<div class="outline-text-4" id="text-orga2f4a3f">
 <ul class="org-ul">
 <li><a href="https://trax-ml.readthedocs.io/en/latest/trax.data.html#trax.data.inputs.Serial">trax.data.Serial</a></li>
 <li><a href="https://trax-ml.readthedocs.io/en/latest/trax.data.html#trax.data.inputs.Batch">trax.data.batch</a></li>
@@ -289,9 +320,9 @@
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org3a80e5d">
-<h3 id="org3a80e5d">The Model</h3>
-<div class="outline-text-3" id="text-org3a80e5d">
+<div class="outline-3" id="outline-container-org62f32a4">
+<h3 id="org62f32a4">The Model</h3>
+<div class="outline-text-3" id="text-org62f32a4">
 <ul class="org-ul">
 <li><a href="https://trax-ml.readthedocs.io/en/latest/trax.layers.html#trax.layers.combinators.Serial">trax.layers.Serial</a></li>
 <li><a href="https://trax-ml.readthedocs.io/en/latest/trax.layers.html#trax.layers.core.Dense">trax.layers.Dense</a></li>
@@ -301,12 +332,14 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org5b650c0">
-<h3 id="org5b650c0">Train the Model</h3>
-<div class="outline-text-3" id="text-org5b650c0"></div>
-<div class="outline-4" id="outline-container-org174d71c">
-<h4 id="org174d71c">Set It Up</h4>
-<div class="outline-text-4" id="text-org174d71c">
+<div class="outline-3" id="outline-container-org89006bf">
+<h3 id="org89006bf">Train the Model</h3>
+<div class="outline-text-3" id="text-org89006bf">
+<p>We're going to train the model using <a href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent">Stochastic Gradient Descent</a> with L2 Loss as a metric.</p>
+</div>
+<div class="outline-4" id="outline-container-org4ef58b5">
+<h4 id="org4ef58b5">Set It Up</h4>
+<div class="outline-text-4" id="text-org4ef58b5">
 <ul class="org-ul">
 <li><a href="https://trax-ml.readthedocs.io/en/latest/trax.layers.html#trax.layers.metrics.L2Loss">trax.layers.L2Loss</a></li>
 <li><a href="https://trax-ml.readthedocs.io/en/latest/trax.optimizers.html#trax.optimizers.base.SGD">trax.optimizers.SGD</a></li>
@@ -327,9 +360,9 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org7ae8deb">
-<h4 id="org7ae8deb">Run the Training</h4>
-<div class="outline-text-4" id="text-org7ae8deb">
+<div class="outline-4" id="outline-container-org897563e">
+<h4 id="org897563e">Run the Training</h4>
+<div class="outline-text-4" id="text-org897563e">
 <ul class="org-ul">
 <li><a href="https://trax-ml.readthedocs.io/en/latest/trax.supervised.html#trax.supervised.training.Loop">trax.supervised.training.Loop</a></li>
 <li><a href="https://docs.python.org/3/library/tempfile.html#tempfile.TemporaryFile">tempfile.TemporaryFile</a></li>
@@ -342,30 +375,26 @@
 <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"~/models/linear_model"</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
 <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
     <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
 <span class="n">training_loop</span> <span class="o">=</span> <span class="n">training</span><span class="o">.</span><span class="n">Loop</span><span class="p">(</span>
     <span class="n">model</span><span class="p">,</span> <span class="n">train_task</span><span class="p">,</span> <span class="n">eval_tasks</span><span class="o">=</span><span class="p">[</span><span class="n">eval_task</span><span class="p">],</span> <span class="n">output_dir</span><span class="o">=</span><span class="n">path</span>
 <span class="p">)</span>
-</pre></div>
-<div class="highlight">
-<pre><span></span><span class="n">real_stdout</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>
-<span class="k">with</span> <span class="n">TIMER</span><span class="p">:</span>
-    <span class="k">with</span> <span class="n">TemporaryFile</span><span class="p">(</span><span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">temp_file</span><span class="p">:</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">temp_file</span>
-        <span class="n">training_loop</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">TRAIN_STEPS</span><span class="p">)</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">real_stdout</span>
-</pre></div>
-<pre class="example">
-Started: 2021-02-19 20:47:16.476023
-Ended: 2021-02-19 20:47:17.257812
-Elapsed: 0:00:00.781789
+
+<span class="n">real_stdout</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>
+<span class="k">with</span> <span class="n">TemporaryFile</span><span class="p">(</span><span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">temp_file</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">temp_file</span>
+    <span class="n">training_loop</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">TRAIN_STEPS</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">real_stdout</span>
 </pre></div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-orga8697ca">
-<h3 id="orga8697ca">Plotting the Loss</h3>
-<div class="outline-text-3" id="text-orga8697ca">
+</div>
+<div class="outline-3" id="outline-container-org12b2d31">
+<h3 id="org12b2d31">Plotting the Loss</h3>
+<div class="outline-text-3" id="text-org12b2d31">
 <div class="highlight">
-<pre><span></span><span class="n">frame</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">training_loop</span><span class="o">.</span><span class="n">history</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"eval"</span><span class="p">,</span> <span class="s2">"metrics/L2Loss"</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"Batch"</span><span class="p">,</span> <span class="s2">"L2 Loss"</span><span class="p">])</span>
+<pre><span></span><span class="n">frame</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">training_loop</span><span class="o">.</span><span class="n">history</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"eval"</span><span class="p">,</span> <span class="s2">"metrics/L2Loss"</span><span class="p">),</span>
+                         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"Batch"</span><span class="p">,</span> <span class="s2">"L2 Loss"</span><span class="p">])</span>
 
 <span class="n">minimum</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">frame</span><span class="p">[</span><span class="s2">"L2 Loss"</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
 <span class="n">vline</span> <span class="o">=</span> <span class="n">holoviews</span><span class="o">.</span><span class="n">VLine</span><span class="p">(</span><span class="n">minimum</span><span class="o">.</span><span class="n">Batch</span><span class="p">)</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">VLine</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">PLOT</span><span class="o">.</span><span class="n">red</span><span class="p">))</span>
@@ -387,17 +416,47 @@ Elapsed: 0:00:00.781789
 <p>It looks like it fits pretty quickly.</p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org726195f">
-<h3 id="org726195f">Plotting the Model</h3>
-<div class="outline-text-3" id="text-org726195f">
+<div class="outline-3" id="outline-container-orgf5a3df5">
+<h3 id="orgf5a3df5">Statsmodels Model</h3>
+<div class="outline-text-3" id="text-orgf5a3df5">
+<p>As a comparison, I'll fit a statsmodels Ordinary Least Squares. See: <a href="https://www.statsmodels.org/devel/generated/statsmodels.regression.linear_model.OLS.html">statsmodels.regression.linear_model.OLS</a></p>
 <div class="highlight">
-<pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x_values</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">x_values</span><span class="p">),</span> <span class="mi">1</span><span class="p">)))</span>
+<pre><span></span><span class="n">x_stats</span> <span class="o">=</span> <span class="n">statsmodels</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">x_values</span><span class="p">)</span>
+<span class="n">ols_model</span> <span class="o">=</span> <span class="n">statsmodels</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y_values</span><span class="p">,</span> <span class="n">x_stats</span><span class="p">)</span>
+<span class="n">regression</span> <span class="o">=</span> <span class="n">ols_model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="n">regression_predictions</span> <span class="o">=</span> <span class="n">regression</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org9201366">
+<h3 id="org9201366">Plotting the Model</h3>
+<div class="outline-text-3" id="text-org9201366">
+<p>When we make a prediction, the x-values have to be a matrix, not a vector. So in this case we want one column with all the rows in it which you can get using reshape.</p>
+<p>See: <a href="https://numpy.org/doc/stable/reference/generated/numpy.reshape.html">numpy.reshape</a></p>
+<p>One way to do this would be te pass in the length of the vector as the number of rows.</p>
+<pre class="example" id="org4175cdd">
+x_values.reshape(len(x_values), 1)
+</pre>
+<p>But the convention seems to be to use <code>-1</code> instead of the number of rows.</p>
+<pre class="example" id="org1bd8ce0">
+x_values.reshape(-1, 1)
+</pre>
+<p>Which is cleaner, if not as obvious in meaning.</p>
+<div class="highlight">
+<pre><span></span><span class="n">ALL_ROWS</span><span class="p">,</span> <span class="n">ONE_COLUMN</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">TWO_DIMENSIONS</span> <span class="o">=</span> <span class="p">(</span><span class="n">ALL_ROWS</span><span class="p">,</span> <span class="n">ONE_COLUMN</span><span class="p">)</span>
+
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x_values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">TWO_DIMENSIONS</span><span class="p">))</span>
 <span class="n">data_frame</span><span class="p">[</span><span class="s2">"Predicted"</span><span class="p">]</span> <span class="o">=</span> <span class="n">predictions</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">data_frame</span><span class="p">[</span><span class="s2">"OLS"</span><span class="p">]</span> <span class="o">=</span> <span class="n">regression_predictions</span>
 </pre></div>
 <div class="highlight">
 <pre><span></span><span class="n">actual</span> <span class="o">=</span> <span class="n">data_frame</span><span class="o">.</span><span class="n">hvplot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"X"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"Y"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">PLOT</span><span class="o">.</span><span class="n">tan</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Data"</span><span class="p">)</span>
 <span class="n">predicted</span> <span class="o">=</span> <span class="n">data_frame</span><span class="o">.</span><span class="n">hvplot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"X"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"Predicted"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">PLOT</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Predicted"</span><span class="p">)</span>
-<span class="n">plot</span> <span class="o">=</span> <span class="p">(</span><span class="n">actual</span> <span class="o">*</span> <span class="n">predicted</span><span class="p">)</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span>
+<span class="n">line_plot</span> <span class="o">=</span> <span class="n">line_frame</span><span class="o">.</span><span class="n">hvplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"X"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"Y"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">PLOT</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Actual"</span><span class="p">)</span>
+<span class="n">ols_plot</span> <span class="o">=</span> <span class="n">data_frame</span><span class="o">.</span><span class="n">hvplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"X"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"OLS"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"OLS"</span><span class="p">)</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="p">(</span><span class="n">actual</span> <span class="o">*</span> <span class="n">predicted</span> <span class="o">*</span> <span class="n">line_plot</span> <span class="o">*</span> <span class="n">ols_plot</span><span class="p">)</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span>
     <span class="n">height</span><span class="o">=</span><span class="n">PLOT</span><span class="o">.</span><span class="n">height</span><span class="p">,</span>
     <span class="n">width</span><span class="o">=</span><span class="n">PLOT</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
     <span class="n">fontscale</span><span class="o">=</span><span class="n">PLOT</span><span class="o">.</span><span class="n">fontscale</span>
@@ -411,10 +470,72 @@ Elapsed: 0:00:00.781789
 <p>Figure Missing</p>
 </object></div>
 </div>
+<div class="outline-3" id="outline-container-org63f6e96">
+<h3 id="org63f6e96">Looking at \(R^2\)</h3>
+<div class="outline-text-3" id="text-org63f6e96">
+<p>SKLearn has an <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html"><code>r2_score</code></a> function to calculate \(R^2\) for us.</p>
+<div class="highlight">
+<pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"OLS R2: </span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_values</span><span class="p">,</span> <span class="n">regression_predictions</span><span class="p">)</span><span class="si">:</span><span class="s2"> 0.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Trax R2: </span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_values</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span><span class="si">:</span><span class="s2"> 0.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+<pre class="example">
+OLS R2:  0.926
+Trax R2:  0.724
+</pre>
+<p>An \(R^2\) of 1 means our model is a strong fit and an \(R^2\) of 0 means it doesn't fit at all. It looks like the Neural Network linear model didn't do so great compared to Ordinary Least Squares, although looking at the line I would have guessed that it did even worse.</p>
 </div>
-<div class="outline-2" id="outline-container-org46ac1bd">
-<h2 id="org46ac1bd">End</h2>
-<div class="outline-text-2" id="text-org46ac1bd">
+</div>
+<div class="outline-3" id="outline-container-org1f7d9fb">
+<h3 id="org1f7d9fb">Parameters</h3>
+<div class="outline-text-3" id="text-org1f7d9fb">
+<p>Let's look at the found parameters.</p>
+<div class="highlight">
+<pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"|Model| Slope |y-intercept |"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"|-+-+-|"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"|Actual| </span><span class="si">{</span><span class="n">SLOPE</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">| </span><span class="si">{</span><span class="n">INTERCEPT</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">|"</span><span class="p">)</span>
+<span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span> <span class="o">=</span> <span class="n">regression</span><span class="o">.</span><span class="n">params</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"|OLS| </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s2"> 0.2f</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s2"> 0.2f</span><span class="si">}</span><span class="s2">|"</span><span class="p">)</span>
+
+<span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"| Trax|</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span><span class="si">:</span><span class="s2"> 0.2f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">intercept</span><span class="p">)</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">|"</span><span class="p">)</span>
+</pre></div>
+<table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
+<colgroup>
+<col class="org-left">
+<col class="org-right">
+<col class="org-right"></colgroup>
+<thead>
+<tr>
+<th class="org-left" scope="col">Model</th>
+<th class="org-right" scope="col">Slope</th>
+<th class="org-right" scope="col">y-intercept</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Actual</td>
+<td class="org-right">4.97</td>
+<td class="org-right">-2.45</td>
+</tr>
+<tr>
+<td class="org-left">OLS</td>
+<td class="org-right">4.91</td>
+<td class="org-right">-4.09</td>
+</tr>
+<tr>
+<td class="org-left">Trax</td>
+<td class="org-right">3.66</td>
+<td class="org-right">1.12</td>
+</tr>
+</tbody>
+</table>
+<p>The OLS got the slope pretty close , but not so much the y-intercept, while trax was further off for both.</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org2c9859a">
+<h2 id="org2c9859a">End</h2>
+<div class="outline-text-2" id="text-org2c9859a">
 <ul class="org-ul">
 <li>The trax code was taken from an example notebook in their <a href="https://github.com/thoo/trax-tutorial/blob/master/basic_regression_tensorboard.ipynb">Github Repository</a>.</li>
 </ul>
