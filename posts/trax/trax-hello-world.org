@@ -13,7 +13,7 @@
 #+END_COMMENT
 #+OPTIONS: ^:{}
 #+TOC: headlines 3
-#+PROPERTY: header-args :session ~/.local/share/jupyter/runtime/kernel-1b04e176-99b7-42d6-acb5-079b71504ab3-ssh.json
+#+PROPERTY: header-args :session ~/.local/share/jupyter/runtime/kernel-928c7f5b-7df2-4910-afe5-92a6f4748ec8-ssh.json
 #+BEGIN_SRC python :results none :exports none
 %load_ext autoreload
 %autoreload 2
@@ -24,7 +24,36 @@
 \[
 y = mx + b
 \]
+
+Where /m/ is the slope and /b/ is the y-intercept. In statistics this is sometimes written using betas:
+
+\[
+y = \beta_0 + \beta_1 x
+\]
+
+And in machine learning it's sometimes written with weights:
+
+\[
+y = w_0 + w_1 x
+\]
+
+Or with a bias and a weight:
+
+\[
+y = bias + w_0 x
+\]
 ** Imports
+*** Trax Imports
+    Since this is about trax I'll separate out the imports to make it more obvious.
+#+begin_src python :results none
+from trax import layers
+from trax.supervised import training
+
+import trax
+#+end_src
+*** Not-Trax
+    The rest of this is just to support the data creation, plotting, etc.
+
 #+begin_src python :results none
 # python
 from collections import namedtuple
@@ -38,25 +67,29 @@ import sys
 
 # pypi
 from holoviews import opts
-from trax import layers
-from trax.supervised import training
+from sklearn.metrics import r2_score
 
 import holoviews
 import hvplot.pandas
 import numpy
 import pandas
-import trax
+import statsmodels.api as statsmodels
 
 # my stuff
-from graeae import EmbedHoloviews, Timer
+from graeae import EmbedHoloviews
 #+end_src
 ** Set Up
 *** The Random Generator
+    This is the newer (to me) way to generate random numbers with numpy.
+    
     See: [[https://numpy.org/doc/stable/reference/random/generator.html#numpy.random.default_rng][numpy.random.default_rng]]
+
 #+begin_src python :results none
 random_generator = numpy.random.default_rng(seed=2021)
 #+end_src
 *** The Plotting
+    Just some helpers for later on when I do some plotting.
+
 #+begin_src python :results none
 slug = "trax-hello-world"
 Embed = partial(EmbedHoloviews, folder_path=f"files/posts/trax/{slug}")
@@ -71,17 +104,15 @@ PLOT = Plot(
     red="#ce7b6d",
  )
 #+end_src
-*** The Timer
-#+begin_src python :results none
-TIMER = Timer()
-#+end_src    
-* Middle
+* The Linear Regression
 ** The Data
    Trax is pretty invested in using generators, but I also want to be able to plot it, so rather than just generate the data on the fly I'll create a numpy array and then generate the data from it.
+
 *** Sample
     See:
      - [[https://numpy.org/devdocs/reference/random/generated/numpy.random.Generator.standard_normal.html?highlight=standard_normal#numpy.random.Generator.standard_normal][numpy.random.Generator.standard_normal]]
      - [[https://numpy.org/devdocs/reference/random/generated/numpy.random.Generator.random.html?highlight=random#numpy.random.Generator.random][numpy.random.Generator.random]]
+
 #+begin_src python :results none
 def sample(start: float, stop: float, shape: tuple, uniform: bool=True) -> numpy.ndarray:
     """Create a random sample
@@ -96,22 +127,30 @@ def sample(start: float, stop: float, shape: tuple, uniform: bool=True) -> numpy
         return (stop - start) * random_generator.random(shape) + start
     return (stop - start) * random_generator.standard_normal(shape) + start
 #+end_src
-*** Y-Values
-The =sample= will create our x-values, but we also need our y-values, so I'll generate those to.
+*** The Samples
+He're I'll make the linear-ish data with some noise added to it.
 
 #+begin_src python :results none
 SAMPLES = 200
 X_RANGE = 5
 x_values = sample(-X_RANGE, X_RANGE, SAMPLES)
-slope = sample(-5, 5, 1)
-intercept = sample(-5, 5, 1)
-noise = sample(-5, 5, SAMPLES, uniform=False)
-y_values = slope * x_values + intercept + noise
+SLOPE = sample(-5, 5, 1)
+INTERCEPT = sample(-5, 5, 1)
+noise = sample(-2, 2, SAMPLES, uniform=False)
+y_values = SLOPE * x_values + INTERCEPT + noise
 #+end_src
+
 *** Plotting the Data
 #+begin_src python :results none
 data_frame = pandas.DataFrame.from_dict(dict(X=x_values, Y=y_values))
-plot = data_frame.hvplot.scatter(x="X", y="Y", title="Sample Data").opts(
+first, last = x_values.min(), x_values.max()
+line_frame = pandas.DataFrame.from_dict(
+    dict(X=[first, last],
+         Y=[slope * first + intercept,
+            slope * last + intercept]))
+line_plot = line_frame.hvplot(x="X", y="Y", color=PLOT.blue)
+data_plot = data_frame.hvplot.scatter(x="X", y="Y", title="Sample Data", color=PLOT.tan)
+plot = (data_plot * line_plot).opts(
     height=PLOT.height,
     width=PLOT.width,
     fontscale=PLOT.fontscale
@@ -130,6 +169,8 @@ print(output)
 </object>
 #+end_export
 *** Data Generator
+    This will generate the data for the trax batch generator.
+    
 #+begin_src python :results none
 def linear_generator(x: numpy.ndarray, y: numpy.ndarray) -> tuple:
     """Generator of linear data
@@ -156,7 +197,7 @@ print(next(generator))
 #+end_src
 
 #+RESULTS:
-: (array([4.58281806]), array([-24.5758327]))
+: (array([2.56947828]), array([10.52443023]))
 *** The Data Pipeline
     - [[https://trax-ml.readthedocs.io/en/latest/trax.data.html#trax.data.inputs.Serial][trax.data.Serial]]    
     - [[https://trax-ml.readthedocs.io/en/latest/trax.data.html#trax.data.inputs.Batch][trax.data.batch]]
@@ -173,6 +214,8 @@ data_stream = data_pipeline(generator)
 model = layers.Serial(layers.Dense(1))
 #+end_src
 ** Train the Model
+   We're going to train the model using [[https://en.wikipedia.org/wiki/Stochastic_gradient_descent][Stochastic Gradient Descent]] with L2 Loss as a metric.
+
 *** Set It Up   
    - [[https://trax-ml.readthedocs.io/en/latest/trax.layers.html#trax.layers.metrics.L2Loss][trax.layers.L2Loss]]
    - [[https://trax-ml.readthedocs.io/en/latest/trax.optimizers.html#trax.optimizers.base.SGD][trax.optimizers.SGD]]
@@ -200,32 +243,28 @@ eval_task = training.EvalTask(
 
 I use the =TemporaryFile= because I can't figure out how to prevent the training loop printing to standard out and making this file way too long.
 
-#+begin_src python :results none
+#+begin_src python :results output :exports both
 TRAIN_STEPS = 200
 path = Path("~/models/linear_model").expanduser()
 if path.exists():
     shutil.rmtree(path)
+
 training_loop = training.Loop(
     model, train_task, eval_tasks=[eval_task], output_dir=path
 )
-#+end_src
 
-#+begin_src python :results output :exports both
 real_stdout = sys.stdout
-with TIMER:
-    with TemporaryFile("w") as temp_file:
-        sys.stdout = temp_file
-        training_loop.run(TRAIN_STEPS)
-        sys.stdout = real_stdout
+with TemporaryFile("w") as temp_file:
+    sys.stdout = temp_file
+    training_loop.run(TRAIN_STEPS)
+    sys.stdout = real_stdout
 #+end_src    
 
 #+RESULTS:
-: Started: 2021-02-19 20:47:16.476023
-: Ended: 2021-02-19 20:47:17.257812
-: Elapsed: 0:00:00.781789
 ** Plotting the Loss
 #+begin_src python :results none
-frame = pandas.DataFrame(training_loop.history.get("eval", "metrics/L2Loss"), columns=["Batch", "L2 Loss"])
+frame = pandas.DataFrame(training_loop.history.get("eval", "metrics/L2Loss"),
+                         columns=["Batch", "L2 Loss"])
 
 minimum = frame.loc[frame["L2 Loss"].idxmin()]
 vline = holoviews.VLine(minimum.Batch).opts(opts.VLine(color=PLOT.red))
@@ -251,17 +290,52 @@ print(output)
 #+end_export
 
 It looks like it fits pretty quickly.
+** Statsmodels Model
+   As a comparison, I'll fit a statsmodels Ordinary Least Squares.
+   See:  [[https://www.statsmodels.org/devel/generated/statsmodels.regression.linear_model.OLS.html][statsmodels.regression.linear_model.OLS]]
+   
+#+begin_src python :results none
+x_stats = statsmodels.add_constant(x_values)
+ols_model = statsmodels.OLS(y_values, x_stats)
+regression = ols_model.fit()
+
+regression_predictions = regression.predict(x_stats)
+#+end_src
+   
 ** Plotting the Model
+   When we make a prediction, the x-values have to be a matrix, not a vector. So in this case we want one column with all the rows in it which you can get using reshape.
+
+   See: [[https://numpy.org/doc/stable/reference/generated/numpy.reshape.html][numpy.reshape]]
+
+One way to do this would be te pass in the length of the vector as the number of rows.
+
+#+begin_example python
+x_values.reshape(len(x_values), 1)
+#+end_example
+
+But the convention seems to be to use =-1= instead of the number of rows.
+
+#+begin_example python
+x_values.reshape(-1, 1)
+#+end_example
+
+Which is cleaner, if not as obvious in meaning.
 
 #+begin_src python :results none
-predictions = model(x_values.reshape((len(x_values), 1)))
+ALL_ROWS, ONE_COLUMN = -1, 1
+TWO_DIMENSIONS = (ALL_ROWS, ONE_COLUMN)
+
+predictions = model(x_values.reshape(TWO_DIMENSIONS))
 data_frame["Predicted"] = predictions[:, 0]
+data_frame["OLS"] = regression_predictions
 #+end_src
 
 #+begin_src python :results none
 actual = data_frame.hvplot.scatter(x="X", y="Y", color=PLOT.tan, label="Data")
 predicted = data_frame.hvplot.scatter(x="X", y="Predicted", color=PLOT.red, label="Predicted")
-plot = (actual * predicted).opts(
+line_plot = line_frame.hvplot(x="X", y="Y", color=PLOT.blue, label="Actual")
+ols_plot = data_frame.hvplot(x="X", y="OLS", label="OLS")
+plot = (actual * predicted * line_plot * ols_plot).opts(
     height=PLOT.height,
     width=PLOT.width,
     fontscale=PLOT.fontscale
@@ -279,6 +353,41 @@ print(output)
    <p>Figure Missing</p>
  </object>
 #+end_export
+** Looking at \(R^2\)
+   SKLearn has an [[https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html][~r2_score~]] function to calculate \(R^2\) for us.
+   
+#+begin_src python :results output :exports both
+print(f"OLS R2: {r2_score(y_values, regression_predictions): 0.3f}")
+print(f"Trax R2: {r2_score(y_values, predictions): 0.3f}")
+#+end_src   
 
-* End
+#+RESULTS:
+: OLS R2:  0.926
+: Trax R2:  0.724
+
+An \(R^2\) of 1 means our model is a strong fit and an \(R^2\) of 0 means it doesn't fit at all. It looks like the Neural Network linear model didn't do so great compared to Ordinary Least Squares, although looking at the line I would have guessed that it did even worse.
+
+** Parameters
+Let's look at the found parameters.
+
+#+begin_src python :results output :exports both
+print("|Model| Slope |y-intercept |")
+print("|-+-+-|")
+print(f"|Actual| {SLOPE[0]:0.2f}| {INTERCEPT[0]:0.2f}|")
+intercept, slope = regression.params
+print(f"|OLS| {slope: 0.2f}|{intercept: 0.2f}|")
+
+slope, intercept = model.weights[0]
+print(f"| Trax|{float(slope): 0.2f} | {float(intercept):0.2f}|")
+#+end_src
+
+| Model  | Slope | y-intercept |
+|--------+-------+-------------|
+| Actual |  4.97 |       -2.45 |
+| OLS    |  4.91 |       -4.09 |
+| Trax   |  3.66 |        1.12 |
+
+The OLS got the slope pretty close , but not so much the y-intercept, while trax was further off for both.
+
+* End  
   - The trax code was taken from an example notebook in their [[https://github.com/thoo/trax-tutorial/blob/master/basic_regression_tensorboard.ipynb][Github Repository]].
