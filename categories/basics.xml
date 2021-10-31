@@ -1,56 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Anechoic Echolalia (Posts about basics)</title><link>https://necromuralist.github.io/Anechoic-Echolalia/</link><description></description><atom:link href="https://necromuralist.github.io/Anechoic-Echolalia/categories/basics.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:necromuralist@protonmail.com"&gt;Cloistered Monkey&lt;/a&gt; &lt;p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"&gt;&lt;a property="dct:title" rel="cc:attributionURL" href="https://necromuralist.github.io/Anechoic-Echolalia/"&gt;Anechoic Echolalia&lt;/a&gt; by &lt;a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/necromuralist"&gt;The Cloistered Monkey&lt;/a&gt; is licensed under &lt;a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;"&gt;CC BY 4.0&lt;img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"&gt;&lt;img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"&gt;&lt;/a&gt;&lt;/p&gt;</copyright><lastBuildDate>Sun, 21 Feb 2021 00:29:20 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Trax Hello World</title><link>https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/</link><dc:creator>Cloistered Monkey</dc:creator><description>&lt;div id="table-of-contents"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Anechoic Echolalia (Posts about basics)</title><link>https://necromuralist.github.io/Anechoic-Echolalia/</link><description></description><atom:link href="https://necromuralist.github.io/Anechoic-Echolalia/categories/basics.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:cloisteredmonkey.jmark@slmail.me"&gt;Cloistered Monkey&lt;/a&gt; &lt;p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"&gt;&lt;a property="dct:title" rel="cc:attributionURL" href="https://necromuralist.github.io/Anechoic-Echolalia/"&gt;Anechoic Echolalia&lt;/a&gt; by &lt;a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/necromuralist"&gt;The Cloistered Monkey&lt;/a&gt; is licensed under &lt;a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;"&gt;CC BY 4.0&lt;img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"&gt;&lt;img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"&gt;&lt;/a&gt;&lt;/p&gt;</copyright><lastBuildDate>Sun, 31 Oct 2021 23:21:01 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Trax Hello World</title><link>https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/</link><dc:creator>Cloistered Monkey</dc:creator><description>&lt;div id="table-of-contents"&gt;
 &lt;h2&gt;Table of Contents&lt;/h2&gt;
 &lt;div id="text-table-of-contents"&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#orgbc13eda"&gt;Beginning&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#orge4b5bc1"&gt;Beginning&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org8882a17"&gt;Imports&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org736be8a"&gt;Imports&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org2b226a3"&gt;Trax Imports&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#orga034f8f"&gt;Not-Trax&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#orge234b1e"&gt;Trax Imports&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org835bf72"&gt;Not-Trax&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org2366e91"&gt;Set Up&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org5e9b922"&gt;Set Up&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#orgb1848ad"&gt;The Random Generator&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org786c127"&gt;The Plotting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org6cc797a"&gt;The Random Generator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#orga82d32e"&gt;The Plotting&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#orge3203b4"&gt;The Linear Regression&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org75e38ba"&gt;The Linear Regression&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org38233e6"&gt;The Data&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org4f95cfc"&gt;The Data&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org06ea467"&gt;Sample&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org046af70"&gt;The Samples&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org32e2cdf"&gt;Plotting the Data&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org4bc041b"&gt;Data Generator&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#orga2f4a3f"&gt;The Data Pipeline&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org64a562b"&gt;Sample&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#orgc048379"&gt;The Samples&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org4257365"&gt;Plotting the Data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org8cc8d0a"&gt;Data Generator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org33ad8f3"&gt;The Data Pipeline&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org62f32a4"&gt;The Model&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org89006bf"&gt;Train the Model&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org8546f63"&gt;The Model&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#orgf2feee9"&gt;Train the Model&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org4ef58b5"&gt;Set It Up&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org897563e"&gt;Run the Training&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org20859e5"&gt;Set It Up&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#orgbd3e90b"&gt;Run the Training&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org12b2d31"&gt;Plotting the Loss&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#orgf5a3df5"&gt;Statsmodels Model&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org9201366"&gt;Plotting the Model&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org63f6e96"&gt;Looking at \(R^2\)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org1f7d9fb"&gt;Parameters&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org2b0bf9b"&gt;Plotting the Loss&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org7e34737"&gt;Statsmodels Model&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org94ca48f"&gt;Plotting the Model&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org661796f"&gt;Looking at \(R^2\)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#orgab04d51"&gt;Parameters&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#org2c9859a"&gt;End&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/Anechoic-Echolalia/posts/trax/trax-hello-world/#orga4c564a"&gt;End&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgbc13eda" class="outline-2"&gt;
-&lt;h2 id="orgbc13eda"&gt;Beginning&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgbc13eda"&gt;
+&lt;div id="outline-container-orge4b5bc1" class="outline-2"&gt;
+&lt;h2 id="orge4b5bc1"&gt;Beginning&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orge4b5bc1"&gt;
 &lt;p&gt;
 This 'Hello World' takes data created by a simple linear model and trains a neural network to model it. The actual model will take this form:
 &lt;/p&gt;
@@ -91,13 +91,13 @@ y = bias + w_0 x
 \]
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org8882a17" class="outline-3"&gt;
-&lt;h3 id="org8882a17"&gt;Imports&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org8882a17"&gt;
+&lt;div id="outline-container-org736be8a" class="outline-3"&gt;
+&lt;h3 id="org736be8a"&gt;Imports&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org736be8a"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org2b226a3" class="outline-4"&gt;
-&lt;h4 id="org2b226a3"&gt;Trax Imports&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org2b226a3"&gt;
+&lt;div id="outline-container-orge234b1e" class="outline-4"&gt;
+&lt;h4 id="orge234b1e"&gt;Trax Imports&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orge234b1e"&gt;
 &lt;p&gt;
 Since this is about trax I'll separate out the imports to make it more obvious.
 &lt;/p&gt;
@@ -108,9 +108,9 @@ Since this is about trax I'll separate out the imports to make it more obvious.
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orga034f8f" class="outline-4"&gt;
-&lt;h4 id="orga034f8f"&gt;Not-Trax&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orga034f8f"&gt;
+&lt;div id="outline-container-org835bf72" class="outline-4"&gt;
+&lt;h4 id="org835bf72"&gt;Not-Trax&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org835bf72"&gt;
 &lt;p&gt;
 The rest of this is just to support the data creation, plotting, etc.
 &lt;/p&gt;
@@ -141,13 +141,13 @@ The rest of this is just to support the data creation, plotting, etc.
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org2366e91" class="outline-3"&gt;
-&lt;h3 id="org2366e91"&gt;Set Up&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org2366e91"&gt;
+&lt;div id="outline-container-org5e9b922" class="outline-3"&gt;
+&lt;h3 id="org5e9b922"&gt;Set Up&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org5e9b922"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgb1848ad" class="outline-4"&gt;
-&lt;h4 id="orgb1848ad"&gt;The Random Generator&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgb1848ad"&gt;
+&lt;div id="outline-container-org6cc797a" class="outline-4"&gt;
+&lt;h4 id="org6cc797a"&gt;The Random Generator&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org6cc797a"&gt;
 &lt;p&gt;
 This is the newer (to me) way to generate random numbers with numpy.
 &lt;/p&gt;
@@ -160,9 +160,9 @@ See: &lt;a href="https://numpy.org/doc/stable/reference/random/generator.html#nu
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org786c127" class="outline-4"&gt;
-&lt;h4 id="org786c127"&gt;The Plotting&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org786c127"&gt;
+&lt;div id="outline-container-orga82d32e" class="outline-4"&gt;
+&lt;h4 id="orga82d32e"&gt;The Plotting&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orga82d32e"&gt;
 &lt;p&gt;
 Just some helpers for later on when I do some plotting.
 &lt;/p&gt;
@@ -184,21 +184,21 @@ Just some helpers for later on when I do some plotting.
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orge3203b4" class="outline-2"&gt;
-&lt;h2 id="orge3203b4"&gt;The Linear Regression&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orge3203b4"&gt;
+&lt;div id="outline-container-org75e38ba" class="outline-2"&gt;
+&lt;h2 id="org75e38ba"&gt;The Linear Regression&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org75e38ba"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org38233e6" class="outline-3"&gt;
-&lt;h3 id="org38233e6"&gt;The Data&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org38233e6"&gt;
+&lt;div id="outline-container-org4f95cfc" class="outline-3"&gt;
+&lt;h3 id="org4f95cfc"&gt;The Data&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org4f95cfc"&gt;
 &lt;p&gt;
 Trax is pretty invested in using generators, but I also want to be able to plot it, so rather than just generate the data on the fly I'll create a numpy array and then generate the data from it.
 &lt;/p&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org06ea467" class="outline-4"&gt;
-&lt;h4 id="org06ea467"&gt;Sample&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org06ea467"&gt;
+&lt;div id="outline-container-org64a562b" class="outline-4"&gt;
+&lt;h4 id="org64a562b"&gt;Sample&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org64a562b"&gt;
 &lt;p&gt;
 See:
 &lt;/p&gt;
@@ -222,9 +222,9 @@ See:
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org046af70" class="outline-4"&gt;
-&lt;h4 id="org046af70"&gt;The Samples&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org046af70"&gt;
+&lt;div id="outline-container-orgc048379" class="outline-4"&gt;
+&lt;h4 id="orgc048379"&gt;The Samples&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgc048379"&gt;
 &lt;p&gt;
 He're I'll make the linear-ish data with some noise added to it.
 &lt;/p&gt;
@@ -240,9 +240,9 @@ He're I'll make the linear-ish data with some noise added to it.
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org32e2cdf" class="outline-4"&gt;
-&lt;h4 id="org32e2cdf"&gt;Plotting the Data&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org32e2cdf"&gt;
+&lt;div id="outline-container-org4257365" class="outline-4"&gt;
+&lt;h4 id="org4257365"&gt;Plotting the Data&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org4257365"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;data_frame&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pandas&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;x_values&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;y_values&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;span class="n"&gt;first&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;x_values&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;x_values&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;max&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;line_frame&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pandas&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
@@ -267,9 +267,9 @@ He're I'll make the linear-ish data with some noise added to it.
 &lt;/object&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org4bc041b" class="outline-4"&gt;
-&lt;h4 id="org4bc041b"&gt;Data Generator&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org4bc041b"&gt;
+&lt;div id="outline-container-org8cc8d0a" class="outline-4"&gt;
+&lt;h4 id="org8cc8d0a"&gt;Data Generator&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org8cc8d0a"&gt;
 &lt;p&gt;
 This will generate the data for the trax batch generator.
 &lt;/p&gt;
@@ -302,9 +302,9 @@ This will generate the data for the trax batch generator.
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orga2f4a3f" class="outline-4"&gt;
-&lt;h4 id="orga2f4a3f"&gt;The Data Pipeline&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orga2f4a3f"&gt;
+&lt;div id="outline-container-org33ad8f3" class="outline-4"&gt;
+&lt;h4 id="org33ad8f3"&gt;The Data Pipeline&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org33ad8f3"&gt;
 &lt;ul class="org-ul"&gt;
 &lt;li&gt;&lt;a href="https://trax-ml.readthedocs.io/en/latest/trax.data.html#trax.data.inputs.Serial"&gt;trax.data.Serial&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://trax-ml.readthedocs.io/en/latest/trax.data.html#trax.data.inputs.Batch"&gt;trax.data.batch&lt;/a&gt;&lt;/li&gt;
@@ -317,9 +317,9 @@ This will generate the data for the trax batch generator.
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org62f32a4" class="outline-3"&gt;
-&lt;h3 id="org62f32a4"&gt;The Model&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org62f32a4"&gt;
+&lt;div id="outline-container-org8546f63" class="outline-3"&gt;
+&lt;h3 id="org8546f63"&gt;The Model&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org8546f63"&gt;
 &lt;ul class="org-ul"&gt;
 &lt;li&gt;&lt;a href="https://trax-ml.readthedocs.io/en/latest/trax.layers.html#trax.layers.combinators.Serial"&gt;trax.layers.Serial&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://trax-ml.readthedocs.io/en/latest/trax.layers.html#trax.layers.core.Dense"&gt;trax.layers.Dense&lt;/a&gt;&lt;/li&gt;
@@ -328,17 +328,17 @@ This will generate the data for the trax batch generator.
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org89006bf" class="outline-3"&gt;
-&lt;h3 id="org89006bf"&gt;Train the Model&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org89006bf"&gt;
+&lt;div id="outline-container-orgf2feee9" class="outline-3"&gt;
+&lt;h3 id="orgf2feee9"&gt;Train the Model&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-orgf2feee9"&gt;
 &lt;p&gt;
 We're going to train the model using &lt;a href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent"&gt;Stochastic Gradient Descent&lt;/a&gt; with L2 Loss as a metric.
 &lt;/p&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org4ef58b5" class="outline-4"&gt;
-&lt;h4 id="org4ef58b5"&gt;Set It Up&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org4ef58b5"&gt;
+&lt;div id="outline-container-org20859e5" class="outline-4"&gt;
+&lt;h4 id="org20859e5"&gt;Set It Up&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org20859e5"&gt;
 &lt;ul class="org-ul"&gt;
 &lt;li&gt;&lt;a href="https://trax-ml.readthedocs.io/en/latest/trax.layers.html#trax.layers.metrics.L2Loss"&gt;trax.layers.L2Loss&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://trax-ml.readthedocs.io/en/latest/trax.optimizers.html#trax.optimizers.base.SGD"&gt;trax.optimizers.SGD&lt;/a&gt;&lt;/li&gt;
@@ -362,9 +362,9 @@ The online documentation doesn't cover the &lt;code&gt;TrainTask&lt;/code&gt; an
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org897563e" class="outline-4"&gt;
-&lt;h4 id="org897563e"&gt;Run the Training&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org897563e"&gt;
+&lt;div id="outline-container-orgbd3e90b" class="outline-4"&gt;
+&lt;h4 id="orgbd3e90b"&gt;Run the Training&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgbd3e90b"&gt;
 &lt;ul class="org-ul"&gt;
 &lt;li&gt;&lt;a href="https://trax-ml.readthedocs.io/en/latest/trax.supervised.html#trax.supervised.training.Loop"&gt;trax.supervised.training.Loop&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.python.org/3/library/tempfile.html#tempfile.TemporaryFile"&gt;tempfile.TemporaryFile&lt;/a&gt;&lt;/li&gt;
@@ -394,9 +394,9 @@ I use the &lt;code&gt;TemporaryFile&lt;/code&gt; because I can't figure out how 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org12b2d31" class="outline-3"&gt;
-&lt;h3 id="org12b2d31"&gt;Plotting the Loss&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org12b2d31"&gt;
+&lt;div id="outline-container-org2b0bf9b" class="outline-3"&gt;
+&lt;h3 id="org2b0bf9b"&gt;Plotting the Loss&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org2b0bf9b"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;frame&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pandas&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;training_loop&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;history&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"eval"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"metrics/L2Loss"&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
 			 &lt;span class="n"&gt;columns&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"Batch"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"L2 Loss"&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 
@@ -424,9 +424,9 @@ It looks like it fits pretty quickly.
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgf5a3df5" class="outline-3"&gt;
-&lt;h3 id="orgf5a3df5"&gt;Statsmodels Model&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-orgf5a3df5"&gt;
+&lt;div id="outline-container-org7e34737" class="outline-3"&gt;
+&lt;h3 id="org7e34737"&gt;Statsmodels Model&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org7e34737"&gt;
 &lt;p&gt;
 As a comparison, I'll fit a statsmodels Ordinary Least Squares.
 See:  &lt;a href="https://www.statsmodels.org/devel/generated/statsmodels.regression.linear_model.OLS.html"&gt;statsmodels.regression.linear_model.OLS&lt;/a&gt;
@@ -441,9 +441,9 @@ See:  &lt;a href="https://www.statsmodels.org/devel/generated/statsmodels.regres
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org9201366" class="outline-3"&gt;
-&lt;h3 id="org9201366"&gt;Plotting the Model&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org9201366"&gt;
+&lt;div id="outline-container-org94ca48f" class="outline-3"&gt;
+&lt;h3 id="org94ca48f"&gt;Plotting the Model&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org94ca48f"&gt;
 &lt;p&gt;
 When we make a prediction, the x-values have to be a matrix, not a vector. So in this case we want one column with all the rows in it which you can get using reshape.
 &lt;/p&gt;
@@ -456,7 +456,7 @@ See: &lt;a href="https://numpy.org/doc/stable/reference/generated/numpy.reshape.
 One way to do this would be te pass in the length of the vector as the number of rows.
 &lt;/p&gt;
 
-&lt;pre class="example" id="org4175cdd"&gt;
+&lt;pre class="example"&gt;
 x_values.reshape(len(x_values), 1)
 &lt;/pre&gt;
 
@@ -464,7 +464,7 @@ x_values.reshape(len(x_values), 1)
 But the convention seems to be to use &lt;code&gt;-1&lt;/code&gt; instead of the number of rows.
 &lt;/p&gt;
 
-&lt;pre class="example" id="org1bd8ce0"&gt;
+&lt;pre class="example"&gt;
 x_values.reshape(-1, 1)
 &lt;/pre&gt;
 
@@ -500,9 +500,9 @@ Which is cleaner, if not as obvious in meaning.
 &lt;/object&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org63f6e96" class="outline-3"&gt;
-&lt;h3 id="org63f6e96"&gt;Looking at \(R^2\)&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org63f6e96"&gt;
+&lt;div id="outline-container-org661796f" class="outline-3"&gt;
+&lt;h3 id="org661796f"&gt;Looking at \(R^2\)&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org661796f"&gt;
 &lt;p&gt;
 SKLearn has an &lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html"&gt;&lt;code&gt;r2_score&lt;/code&gt;&lt;/a&gt; function to calculate \(R^2\) for us.
 &lt;/p&gt;
@@ -523,9 +523,9 @@ An \(R^2\) of 1 means our model is a strong fit and an \(R^2\) of 0 means it doe
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org1f7d9fb" class="outline-3"&gt;
-&lt;h3 id="org1f7d9fb"&gt;Parameters&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org1f7d9fb"&gt;
+&lt;div id="outline-container-orgab04d51" class="outline-3"&gt;
+&lt;h3 id="orgab04d51"&gt;Parameters&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-orgab04d51"&gt;
 &lt;p&gt;
 Let's look at the found parameters.
 &lt;/p&gt;
@@ -585,9 +585,9 @@ The OLS got the slope pretty close , but not so much the y-intercept, while trax
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org2c9859a" class="outline-2"&gt;
-&lt;h2 id="org2c9859a"&gt;End&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org2c9859a"&gt;
+&lt;div id="outline-container-orga4c564a" class="outline-2"&gt;
+&lt;h2 id="orga4c564a"&gt;End&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orga4c564a"&gt;
 &lt;ul class="org-ul"&gt;
 &lt;li&gt;The trax code was taken from an example notebook in their &lt;a href="https://github.com/thoo/trax-tutorial/blob/master/basic_regression_tensorboard.ipynb"&gt;Github Repository&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;

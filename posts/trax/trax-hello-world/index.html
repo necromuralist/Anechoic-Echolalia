@@ -73,54 +73,54 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgbc13eda">Beginning</a>
+<li><a href="#orge4b5bc1">Beginning</a>
 <ul>
-<li><a href="#org8882a17">Imports</a>
+<li><a href="#org736be8a">Imports</a>
 <ul>
-<li><a href="#org2b226a3">Trax Imports</a></li>
-<li><a href="#orga034f8f">Not-Trax</a></li>
+<li><a href="#orge234b1e">Trax Imports</a></li>
+<li><a href="#org835bf72">Not-Trax</a></li>
 </ul>
 </li>
-<li><a href="#org2366e91">Set Up</a>
+<li><a href="#org5e9b922">Set Up</a>
 <ul>
-<li><a href="#orgb1848ad">The Random Generator</a></li>
-<li><a href="#org786c127">The Plotting</a></li>
+<li><a href="#org6cc797a">The Random Generator</a></li>
+<li><a href="#orga82d32e">The Plotting</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orge3203b4">The Linear Regression</a>
+<li><a href="#org75e38ba">The Linear Regression</a>
 <ul>
-<li><a href="#org38233e6">The Data</a>
+<li><a href="#org4f95cfc">The Data</a>
 <ul>
-<li><a href="#org06ea467">Sample</a></li>
-<li><a href="#org046af70">The Samples</a></li>
-<li><a href="#org32e2cdf">Plotting the Data</a></li>
-<li><a href="#org4bc041b">Data Generator</a></li>
-<li><a href="#orga2f4a3f">The Data Pipeline</a></li>
+<li><a href="#org64a562b">Sample</a></li>
+<li><a href="#orgc048379">The Samples</a></li>
+<li><a href="#org4257365">Plotting the Data</a></li>
+<li><a href="#org8cc8d0a">Data Generator</a></li>
+<li><a href="#org33ad8f3">The Data Pipeline</a></li>
 </ul>
 </li>
-<li><a href="#org62f32a4">The Model</a></li>
-<li><a href="#org89006bf">Train the Model</a>
+<li><a href="#org8546f63">The Model</a></li>
+<li><a href="#orgf2feee9">Train the Model</a>
 <ul>
-<li><a href="#org4ef58b5">Set It Up</a></li>
-<li><a href="#org897563e">Run the Training</a></li>
+<li><a href="#org20859e5">Set It Up</a></li>
+<li><a href="#orgbd3e90b">Run the Training</a></li>
 </ul>
 </li>
-<li><a href="#org12b2d31">Plotting the Loss</a></li>
-<li><a href="#orgf5a3df5">Statsmodels Model</a></li>
-<li><a href="#org9201366">Plotting the Model</a></li>
-<li><a href="#org63f6e96">Looking at \(R^2\)</a></li>
-<li><a href="#org1f7d9fb">Parameters</a></li>
+<li><a href="#org2b0bf9b">Plotting the Loss</a></li>
+<li><a href="#org7e34737">Statsmodels Model</a></li>
+<li><a href="#org94ca48f">Plotting the Model</a></li>
+<li><a href="#org661796f">Looking at \(R^2\)</a></li>
+<li><a href="#orgab04d51">Parameters</a></li>
 </ul>
 </li>
-<li><a href="#org2c9859a">End</a></li>
+<li><a href="#orga4c564a">End</a></li>
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-orgbc13eda">
-<h2 id="orgbc13eda">Beginning</h2>
-<div class="outline-text-2" id="text-orgbc13eda">
+<div class="outline-2" id="outline-container-orge4b5bc1">
+<h2 id="orge4b5bc1">Beginning</h2>
+<div class="outline-text-2" id="text-orge4b5bc1">
 <p>This 'Hello World' takes data created by a simple linear model and trains a neural network to model it. The actual model will take this form:</p>
 <p>\[ y = mx + b \]</p>
 <p>Where <i>m</i> is the slope and <i>b</i> is the y-intercept. In statistics this is sometimes written using betas:</p>
@@ -130,12 +130,12 @@
 <p>Or with a bias and a weight:</p>
 <p>\[ y = bias + w_0 x \]</p>
 </div>
-<div class="outline-3" id="outline-container-org8882a17">
-<h3 id="org8882a17">Imports</h3>
-<div class="outline-text-3" id="text-org8882a17"></div>
-<div class="outline-4" id="outline-container-org2b226a3">
-<h4 id="org2b226a3">Trax Imports</h4>
-<div class="outline-text-4" id="text-org2b226a3">
+<div class="outline-3" id="outline-container-org736be8a">
+<h3 id="org736be8a">Imports</h3>
+<div class="outline-text-3" id="text-org736be8a"></div>
+<div class="outline-4" id="outline-container-orge234b1e">
+<h4 id="orge234b1e">Trax Imports</h4>
+<div class="outline-text-4" id="text-orge234b1e">
 <p>Since this is about trax I'll separate out the imports to make it more obvious.</p>
 <div class="highlight">
 <pre><span></span><span class="kn">from</span> <span class="nn">trax</span> <span class="kn">import</span> <span class="n">layers</span>
@@ -145,9 +145,9 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-orga034f8f">
-<h4 id="orga034f8f">Not-Trax</h4>
-<div class="outline-text-4" id="text-orga034f8f">
+<div class="outline-4" id="outline-container-org835bf72">
+<h4 id="org835bf72">Not-Trax</h4>
+<div class="outline-text-4" id="text-org835bf72">
 <p>The rest of this is just to support the data creation, plotting, etc.</p>
 <div class="highlight">
 <pre><span></span><span class="c1"># python</span>
@@ -176,12 +176,12 @@
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org2366e91">
-<h3 id="org2366e91">Set Up</h3>
-<div class="outline-text-3" id="text-org2366e91"></div>
-<div class="outline-4" id="outline-container-orgb1848ad">
-<h4 id="orgb1848ad">The Random Generator</h4>
-<div class="outline-text-4" id="text-orgb1848ad">
+<div class="outline-3" id="outline-container-org5e9b922">
+<h3 id="org5e9b922">Set Up</h3>
+<div class="outline-text-3" id="text-org5e9b922"></div>
+<div class="outline-4" id="outline-container-org6cc797a">
+<h4 id="org6cc797a">The Random Generator</h4>
+<div class="outline-text-4" id="text-org6cc797a">
 <p>This is the newer (to me) way to generate random numbers with numpy.</p>
 <p>See: <a href="https://numpy.org/doc/stable/reference/random/generator.html#numpy.random.default_rng">numpy.random.default_rng</a></p>
 <div class="highlight">
@@ -189,9 +189,9 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org786c127">
-<h4 id="org786c127">The Plotting</h4>
-<div class="outline-text-4" id="text-org786c127">
+<div class="outline-4" id="outline-container-orga82d32e">
+<h4 id="orga82d32e">The Plotting</h4>
+<div class="outline-text-4" id="text-orga82d32e">
 <p>Just some helpers for later on when I do some plotting.</p>
 <div class="highlight">
 <pre><span></span><span class="n">slug</span> <span class="o">=</span> <span class="s2">"trax-hello-world"</span>
@@ -211,17 +211,17 @@
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-orge3203b4">
-<h2 id="orge3203b4">The Linear Regression</h2>
-<div class="outline-text-2" id="text-orge3203b4"></div>
-<div class="outline-3" id="outline-container-org38233e6">
-<h3 id="org38233e6">The Data</h3>
-<div class="outline-text-3" id="text-org38233e6">
+<div class="outline-2" id="outline-container-org75e38ba">
+<h2 id="org75e38ba">The Linear Regression</h2>
+<div class="outline-text-2" id="text-org75e38ba"></div>
+<div class="outline-3" id="outline-container-org4f95cfc">
+<h3 id="org4f95cfc">The Data</h3>
+<div class="outline-text-3" id="text-org4f95cfc">
 <p>Trax is pretty invested in using generators, but I also want to be able to plot it, so rather than just generate the data on the fly I'll create a numpy array and then generate the data from it.</p>
 </div>
-<div class="outline-4" id="outline-container-org06ea467">
-<h4 id="org06ea467">Sample</h4>
-<div class="outline-text-4" id="text-org06ea467">
+<div class="outline-4" id="outline-container-org64a562b">
+<h4 id="org64a562b">Sample</h4>
+<div class="outline-text-4" id="text-org64a562b">
 <p>See:</p>
 <ul class="org-ul">
 <li><a href="https://numpy.org/devdocs/reference/random/generated/numpy.random.Generator.standard_normal.html?highlight=standard_normal#numpy.random.Generator.standard_normal">numpy.random.Generator.standard_normal</a></li>
@@ -243,9 +243,9 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org046af70">
-<h4 id="org046af70">The Samples</h4>
-<div class="outline-text-4" id="text-org046af70">
+<div class="outline-4" id="outline-container-orgc048379">
+<h4 id="orgc048379">The Samples</h4>
+<div class="outline-text-4" id="text-orgc048379">
 <p>He're I'll make the linear-ish data with some noise added to it.</p>
 <div class="highlight">
 <pre><span></span><span class="n">SAMPLES</span> <span class="o">=</span> <span class="mi">200</span>
@@ -258,9 +258,9 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org32e2cdf">
-<h4 id="org32e2cdf">Plotting the Data</h4>
-<div class="outline-text-4" id="text-org32e2cdf">
+<div class="outline-4" id="outline-container-org4257365">
+<h4 id="org4257365">Plotting the Data</h4>
+<div class="outline-text-4" id="text-org4257365">
 <div class="highlight">
 <pre><span></span><span class="n">data_frame</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">x_values</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="n">y_values</span><span class="p">))</span>
 <span class="n">first</span><span class="p">,</span> <span class="n">last</span> <span class="o">=</span> <span class="n">x_values</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x_values</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -284,9 +284,9 @@
 <p>Figure Missing</p>
 </object></div>
 </div>
-<div class="outline-4" id="outline-container-org4bc041b">
-<h4 id="org4bc041b">Data Generator</h4>
-<div class="outline-text-4" id="text-org4bc041b">
+<div class="outline-4" id="outline-container-org8cc8d0a">
+<h4 id="org8cc8d0a">Data Generator</h4>
+<div class="outline-text-4" id="text-org8cc8d0a">
 <p>This will generate the data for the trax batch generator.</p>
 <div class="highlight">
 <pre><span></span><span class="k">def</span> <span class="nf">linear_generator</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
@@ -315,9 +315,9 @@
 (array([2.56947828]), array([10.52443023]))
 </pre></div>
 </div>
-<div class="outline-4" id="outline-container-orga2f4a3f">
-<h4 id="orga2f4a3f">The Data Pipeline</h4>
-<div class="outline-text-4" id="text-orga2f4a3f">
+<div class="outline-4" id="outline-container-org33ad8f3">
+<h4 id="org33ad8f3">The Data Pipeline</h4>
+<div class="outline-text-4" id="text-org33ad8f3">
 <ul class="org-ul">
 <li><a href="https://trax-ml.readthedocs.io/en/latest/trax.data.html#trax.data.inputs.Serial">trax.data.Serial</a></li>
 <li><a href="https://trax-ml.readthedocs.io/en/latest/trax.data.html#trax.data.inputs.Batch">trax.data.batch</a></li>
@@ -330,9 +330,9 @@
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org62f32a4">
-<h3 id="org62f32a4">The Model</h3>
-<div class="outline-text-3" id="text-org62f32a4">
+<div class="outline-3" id="outline-container-org8546f63">
+<h3 id="org8546f63">The Model</h3>
+<div class="outline-text-3" id="text-org8546f63">
 <ul class="org-ul">
 <li><a href="https://trax-ml.readthedocs.io/en/latest/trax.layers.html#trax.layers.combinators.Serial">trax.layers.Serial</a></li>
 <li><a href="https://trax-ml.readthedocs.io/en/latest/trax.layers.html#trax.layers.core.Dense">trax.layers.Dense</a></li>
@@ -342,14 +342,14 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org89006bf">
-<h3 id="org89006bf">Train the Model</h3>
-<div class="outline-text-3" id="text-org89006bf">
+<div class="outline-3" id="outline-container-orgf2feee9">
+<h3 id="orgf2feee9">Train the Model</h3>
+<div class="outline-text-3" id="text-orgf2feee9">
 <p>We're going to train the model using <a href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent">Stochastic Gradient Descent</a> with L2 Loss as a metric.</p>
 </div>
-<div class="outline-4" id="outline-container-org4ef58b5">
-<h4 id="org4ef58b5">Set It Up</h4>
-<div class="outline-text-4" id="text-org4ef58b5">
+<div class="outline-4" id="outline-container-org20859e5">
+<h4 id="org20859e5">Set It Up</h4>
+<div class="outline-text-4" id="text-org20859e5">
 <ul class="org-ul">
 <li><a href="https://trax-ml.readthedocs.io/en/latest/trax.layers.html#trax.layers.metrics.L2Loss">trax.layers.L2Loss</a></li>
 <li><a href="https://trax-ml.readthedocs.io/en/latest/trax.optimizers.html#trax.optimizers.base.SGD">trax.optimizers.SGD</a></li>
@@ -370,9 +370,9 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org897563e">
-<h4 id="org897563e">Run the Training</h4>
-<div class="outline-text-4" id="text-org897563e">
+<div class="outline-4" id="outline-container-orgbd3e90b">
+<h4 id="orgbd3e90b">Run the Training</h4>
+<div class="outline-text-4" id="text-orgbd3e90b">
 <ul class="org-ul">
 <li><a href="https://trax-ml.readthedocs.io/en/latest/trax.supervised.html#trax.supervised.training.Loop">trax.supervised.training.Loop</a></li>
 <li><a href="https://docs.python.org/3/library/tempfile.html#tempfile.TemporaryFile">tempfile.TemporaryFile</a></li>
@@ -399,9 +399,9 @@
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org12b2d31">
-<h3 id="org12b2d31">Plotting the Loss</h3>
-<div class="outline-text-3" id="text-org12b2d31">
+<div class="outline-3" id="outline-container-org2b0bf9b">
+<h3 id="org2b0bf9b">Plotting the Loss</h3>
+<div class="outline-text-3" id="text-org2b0bf9b">
 <div class="highlight">
 <pre><span></span><span class="n">frame</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">training_loop</span><span class="o">.</span><span class="n">history</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"eval"</span><span class="p">,</span> <span class="s2">"metrics/L2Loss"</span><span class="p">),</span>
                          <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"Batch"</span><span class="p">,</span> <span class="s2">"L2 Loss"</span><span class="p">])</span>
@@ -426,9 +426,9 @@
 <p>It looks like it fits pretty quickly.</p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-orgf5a3df5">
-<h3 id="orgf5a3df5">Statsmodels Model</h3>
-<div class="outline-text-3" id="text-orgf5a3df5">
+<div class="outline-3" id="outline-container-org7e34737">
+<h3 id="org7e34737">Statsmodels Model</h3>
+<div class="outline-text-3" id="text-org7e34737">
 <p>As a comparison, I'll fit a statsmodels Ordinary Least Squares. See: <a href="https://www.statsmodels.org/devel/generated/statsmodels.regression.linear_model.OLS.html">statsmodels.regression.linear_model.OLS</a></p>
 <div class="highlight">
 <pre><span></span><span class="n">x_stats</span> <span class="o">=</span> <span class="n">statsmodels</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">x_values</span><span class="p">)</span>
@@ -439,17 +439,17 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org9201366">
-<h3 id="org9201366">Plotting the Model</h3>
-<div class="outline-text-3" id="text-org9201366">
+<div class="outline-3" id="outline-container-org94ca48f">
+<h3 id="org94ca48f">Plotting the Model</h3>
+<div class="outline-text-3" id="text-org94ca48f">
 <p>When we make a prediction, the x-values have to be a matrix, not a vector. So in this case we want one column with all the rows in it which you can get using reshape.</p>
 <p>See: <a href="https://numpy.org/doc/stable/reference/generated/numpy.reshape.html">numpy.reshape</a></p>
 <p>One way to do this would be te pass in the length of the vector as the number of rows.</p>
-<pre class="example" id="org4175cdd">
+<pre class="example">
 x_values.reshape(len(x_values), 1)
 </pre>
 <p>But the convention seems to be to use <code>-1</code> instead of the number of rows.</p>
-<pre class="example" id="org1bd8ce0">
+<pre class="example">
 x_values.reshape(-1, 1)
 </pre>
 <p>Which is cleaner, if not as obvious in meaning.</p>
@@ -480,9 +480,9 @@ x_values.reshape(-1, 1)
 <p>Figure Missing</p>
 </object></div>
 </div>
-<div class="outline-3" id="outline-container-org63f6e96">
-<h3 id="org63f6e96">Looking at \(R^2\)</h3>
-<div class="outline-text-3" id="text-org63f6e96">
+<div class="outline-3" id="outline-container-org661796f">
+<h3 id="org661796f">Looking at \(R^2\)</h3>
+<div class="outline-text-3" id="text-org661796f">
 <p>SKLearn has an <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html"><code>r2_score</code></a> function to calculate \(R^2\) for us.</p>
 <div class="highlight">
 <pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"OLS R2: </span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_values</span><span class="p">,</span> <span class="n">regression_predictions</span><span class="p">)</span><span class="si">:</span><span class="s2"> 0.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
@@ -495,9 +495,9 @@ Trax R2:  0.724
 <p>An \(R^2\) of 1 means our model is a strong fit and an \(R^2\) of 0 means it doesn't fit at all. It looks like the Neural Network linear model didn't do so great compared to Ordinary Least Squares, although looking at the line I would have guessed that it did even worse.</p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org1f7d9fb">
-<h3 id="org1f7d9fb">Parameters</h3>
-<div class="outline-text-3" id="text-org1f7d9fb">
+<div class="outline-3" id="outline-container-orgab04d51">
+<h3 id="orgab04d51">Parameters</h3>
+<div class="outline-text-3" id="text-orgab04d51">
 <p>Let's look at the found parameters.</p>
 <div class="highlight">
 <pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"|Model| Slope |y-intercept |"</span><span class="p">)</span>
@@ -543,9 +543,9 @@ Trax R2:  0.724
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org2c9859a">
-<h2 id="org2c9859a">End</h2>
-<div class="outline-text-2" id="text-org2c9859a">
+<div class="outline-2" id="outline-container-orga4c564a">
+<h2 id="orga4c564a">End</h2>
+<div class="outline-text-2" id="text-orga4c564a">
 <ul class="org-ul">
 <li>The trax code was taken from an example notebook in their <a href="https://github.com/thoo/trax-tutorial/blob/master/basic_regression_tensorboard.ipynb">Github Repository</a>.</li>
 </ul>
